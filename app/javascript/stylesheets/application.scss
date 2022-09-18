@@ -1,2 +1,12 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.jumbotron{
+  background-image: url("/assets/cropMMK_settingsaretacake");
+  background-size: cover;
+  background-position: center 60%;
+}
+
+#top-icon{
+  background-color: rgba(255,255,255,0.6)
+}
