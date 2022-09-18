@@ -1,0 +1,57 @@
+<header class="mb-5 shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-primary">
+    <div class="container">
+      <h1>nagano_cake</h1>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <% if customer_signed_in? %>
+            <li class="nav-item">
+              <%= link_to 'マイページ', my_page_path, class: 'mr-3btn btn-outline-warning' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to '商品一覧', items_path, class: 'mr-3btn btn-outline-warning' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'カート', cart_items_path, class: 'mr-3 btn btn-outline-warning' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'ログアウト', destroy_customer_session, method: :delete, class: 'btn btn-outline-warning' %>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "商品一覧", about_path, class: 'mr-3 btn btn-outline-warning' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "会員一覧", admin_customers_path, class: 'mr-3 btn btn-outline-warning' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "注文履歴一覧", admin_root_path, class: 'mr-3 btn btn-outline-warning' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ジャンル一覧", admin_genres_path, class: 'mr-3 btn btn-outline-warning' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_admin_session_path, class: 'btn btn-outline-warning' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "About", about_path, class: 'mr-3 btn btn-outline-warning' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "商品一覧", items_path, class: 'mr-3 btn btn-outline-warning' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_customer_registration_path, class: 'mr-3 btn btn-outline-warning' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-outline-warning' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
