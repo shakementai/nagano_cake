@@ -14,10 +14,20 @@
     <% @items.each do |item| %>
       <tr>
         <td><%= item.id %></td>
-        <td><%= item.name %></td>
+        <td>
+          <%= link_to admin_item_path(item.id) do %>
+            <%= item.name %>
+          <% end %>
+        </td>
         <td><%= item.without_tax %></td>
-        <td><%= item.genre_id.name %></td>
-        <td><%= item.is_active %></td>
+        <td><%#= item.genre_id.name %></td>
+        <td>
+          <% if item.is_active == true %>
+            <span class="text-success font-weight-bold">販売中</span>
+          <% else %>
+            <span class="text-secondary font-weight-bold">販売停止中</span>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
