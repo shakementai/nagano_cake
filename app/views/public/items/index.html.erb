@@ -1,2 +1,11 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class="container">
+  <h2>商品一覧(全<%= @items.count %>件)</h2>
+
+  <% @items.each do |item| %>
+   <%= image_tag item.image, size:"100x100" %>
+   <%= item.name %>
+   ¥<%= item.with_tax_price %>
+  <% end %>
+
+  <%= paginate @items %>
+</div>
