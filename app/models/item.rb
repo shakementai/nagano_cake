@@ -8,7 +8,6 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :explanation, presence: true
   validates :without_tax, presence: true
-  validates :is_active, presence: true
   validates :image, presence: true
 
   def get_image(width, height)
