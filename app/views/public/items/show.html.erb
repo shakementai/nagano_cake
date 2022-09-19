@@ -13,12 +13,20 @@
           <h3><%= @item.name %></h3>
           <p><%= @item.explanation %></p>
           <p>¥<%= @item.with_tax_price.to_s(:delimited) %>(税込)</p>
-          <div class="d-flex justify-content-center">
-            <%= form_with model: CartItem.new do |f| %>
-              <%= f.select :amount, *[1..10] %>
-              <%= f.hidden_field :item_id, value: @item.id %>
-              <%= f.hidden_field :customer_id, value: current_customer.id %>
-              <%= f.submit "カートに入れる" %>
+            <% if customer_signed_in? %>
+              <div class="d-flex justify-content-center">
+                <%= form_with model: CartItem.new do |f| %>
+                  <%= f.select :amount, *[1..10] %>
+                  <%= f.hidden_field :item_id, value: @item.id %>
+                  <%= f.hidden_field :customer_id, value: current_customer.id %>
+                  <%= f.submit "カートに入れる" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div>
+                <p>商品をカートに入れるにはログインが必要です</p><br>
+                <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-outline-warning' %>
+              </div>
             <% end %>
           </div>
         </div>
