@@ -2,7 +2,7 @@
   <h3 class="px-3" style="width: fit-content; background-color: #e6e6e6;">商品詳細</h3>
   <div class="row">
     <div class="col-3">
-      <%#= image_tag @item.get_image(100,100) %>
+      <%= image_tag @item.get_image(100,100) %>
     </div>
     <div class="col-9">
       <table>
@@ -17,10 +17,10 @@
           </tr>
           <tr>
             <td><span class="mr-5">ジャンル</span></td>
-            <td><%= @item.genre_id %></td>
+            <td><%= @item.genre.name %></td>
           </tr>
           <tr>
-            <td><span class="mr-5">税込価格(税抜価格)</span></td>
+            <td><span class="mr-5">税込価格<br>(税抜価格)</span></td>
             <td><%= @item.price.round(0).to_s(:delimited) %> (<%= @item.without_tax.to_s(:delimited) %>) 円</td>
           </tr>
           <tr>
