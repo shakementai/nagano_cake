@@ -23,14 +23,29 @@
       <% end %>
     </table>
   </div>
-  <table class="table">
-
-<% @deliveries.each do |delivery| %>
-<p>郵便番号</p>
-  <%= delivery.post_code %>
-<p>住所</p>
-  <%= delivery.address %>
-<p>宛名</p>
-  <%= delivery.name %>
-<% end %>
-</table>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>宛名</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @deliveries.each do |delivery| %>
+        <tr>
+          <td><%= delivery.post_code %></td>
+          <td><%= delivery.address %></td>
+          <td><%= delivery.name %></td>
+          <td>
+            <%= link_to "編集する", edit_delivery_path(delivery) %>
+            <%= link_to "削除する", delivery_path(delivery), method: :delete %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
