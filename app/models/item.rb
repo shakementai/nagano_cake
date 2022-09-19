@@ -10,7 +10,6 @@ class Item < ApplicationRecord
   validates :without_tax, presence: true
   validates :is_active, presence: true
   validates :image, presence: true
-  validates :genre_id, presence: true
 
   def get_image(width, height)
     unless image.attached?
