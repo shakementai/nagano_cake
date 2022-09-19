@@ -1,4 +1,19 @@
 <h1>配送先登録/一覧</h1>
+<%= form_with model: @delivery do |f| %>
+<p>郵便番号(ハイフンなし)</p>
+  <%= f.text_field :post_code %>
+<p>住所</p>
+  <%= f.text_field :address %>
+<p>宛名</p>
+  <%= f.text_field :name %>
+  <%= f.submit "新規登録" %>
+<% end %>
 
-<% form_with model @derivary url: deliveries_path do |f| %>
-  
+<% @deliveries.each do |delivery| %>
+<p>郵便番号</p>
+  <%= delivery.post_code %>
+<p>住所</p>
+  <%= delivery.address %>
+<p>宛名</p>
+  <%= delivery.name %>
+<% end %>

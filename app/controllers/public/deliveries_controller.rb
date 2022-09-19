@@ -6,15 +6,16 @@ class Public::DeliveriesController < ApplicationController
 
   def edit
   end
-  
+
   def create
-    @delivery = Delivary.new(delivery_params)
+    delivery = Delivery.new(delivery_params)
+    delivery.save
     redirect_to request.referer
   end
-  
+
   private
-  
+
   def delivery_params
-    params.require(:derivary).permit(:post_code, :address, :name)
+    params.require(:delivery).permit(:post_code, :address, :name)
   end
 end
