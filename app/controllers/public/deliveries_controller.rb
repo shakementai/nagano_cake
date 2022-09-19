@@ -16,6 +16,6 @@ class Public::DeliveriesController < ApplicationController
   private
 
   def delivery_params
-    params.require(:delivery).permit(:post_code, :address, :name)
+    params.require(:delivery).permit(:post_code, :address, :name, customer_id: current_customer.id)
   end
 end
