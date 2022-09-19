@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     root to: 'homes#top'
   end
 
+  post 'orders/confirm' => 'public/orders#confirm', as: 'confirm'
+  get 'orders/complete' => 'public/orders#complete', as: 'complete'
+
   scope module: :public do
     resources :orders, only: [:new, :index, :show, :create]
     resources :cart_items, only: [:create, :index, :update, :destroy]
@@ -26,9 +29,6 @@ Rails.application.routes.draw do
   patch 'customers/withdraw' => 'public/customers#withdraw', as: 'withdraw'
 
   delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all', as: 'destroy_all'
-
-  post 'orders/confirm' => 'public/orders#confirm', as: 'confirm'
-  get 'orders/complete' => 'public/orders#complete', as: 'complete'
 
   get 'about' => 'public/homes#about', as: 'about'
   root to: 'public/homes#top'
