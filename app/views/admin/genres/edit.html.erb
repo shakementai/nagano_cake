@@ -3,6 +3,7 @@
     <div>
       <h3 class="px-3 mb-5" style= "width: fit-content; background-color: #e6e6e6;">ジャンル編集</h3>
       <%= form_with model: [:admin, @genre] do |f| %>
+      <%= render 'layouts/errors', obj: @genre %>
         <span class="mr-5">ジャンル名</span>
         <%= f.text_field :name %>
         <%= f.submit "変更を保存", class: "ml-5 btn btn-success" %>
