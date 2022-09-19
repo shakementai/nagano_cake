@@ -12,16 +12,18 @@
       </tr>
       <tr>
         <th>住所</th>
-        <th colspan="2"><%= f.text_field :address, size: "45x30" %></th>
+        <th colspan="2"><%= f.text_field :address, size: "45x30",  placeholder: "東京都渋谷区代々木神園町0-0" %></th>
       </tr>
       <tr>
         <th>宛名</th>
-        <th><%= f.text_field :name %></th>
+        <th><%= f.text_field :name, placeholder: "令和道子" %></th>
         <th></th>
         <th><%= f.submit "新規登録" %></th>
       </tr>
       <% end %>
     </table>
+  </div>
+  <table class="table">
 
 <% @deliveries.each do |delivery| %>
 <p>郵便番号</p>
@@ -31,3 +33,4 @@
 <p>宛名</p>
   <%= delivery.name %>
 <% end %>
+</table>
