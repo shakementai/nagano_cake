@@ -14,7 +14,7 @@
             <table class="mr-4">
               <tbody>
                 <tr>
-                  <td><%= image_tag item.image, size:"200x130" %></td>
+                  <td><%= image_tag item.get_image(200, 130) %></td>
                 </tr>
                 <tr>
                   <td><%= item.name %></td>
