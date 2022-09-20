@@ -1,0 +1,10 @@
+<div class="border">
+  <div class="text-center font-weight-bold m-2 border-bottom">
+    ジャンル検索
+  </div>
+    <% genres.each do |genre| %>
+      <%= link_to genre_path(genre) do %>
+        <div class="m-1"><%= genre.name %></div>
+      <% end %>
+    <% end %>
+</div>
