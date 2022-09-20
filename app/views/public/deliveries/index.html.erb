@@ -1,51 +1,57 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4 offset-col-md-2">
-      <h1>配送先登録/一覧</h1>
+    <div class="col-md-3 offset-md-1 mb-5">
+      <h3 class="text-center bg-light">配送先登録/一覧</h3>
     </div>
-    <table class="table table-borderless">
-      <%= form_with model: @delivery, url: deliveries_path, method: :post do |f| %>
-      <tr>
-        <th>郵便番号(ハイフンなし)</th>
-        <th><%= f.text_field :post_code, placeholder: "0000000" %></th>
-        <th></th>
-      </tr>
-      <tr>
-        <th>住所</th>
-        <th colspan="2"><%= f.text_field :address, size: "45x30",  placeholder: "東京都渋谷区代々木神園町0-0" %></th>
-      </tr>
-      <tr>
-        <th>宛名</th>
-        <th><%= f.text_field :name, placeholder: "令和道子" %></th>
-        <th></th>
-        <th><%= f.submit "新規登録" %></th>
-      </tr>
-      <% end %>
-    </table>
   </div>
-  <div class="row">
-    <table class="table table-bordered">
-      <thead>
+  <div class="row mb-5">
+    <div class="col-md-10">
+      <table class="table table-borderless mx-left">
+        <%= form_with model: @delivery, url: deliveries_path, method: :post do |f| %>
         <tr>
-          <th>郵便番号</th>
-          <th>住所</th>
-          <th>宛名</th>
+          <th>郵便番号(ハイフンなし)</th>
+          <th><%= f.text_field :post_code, placeholder: "0000000", style: "border-radius:8px;" %></th>
           <th></th>
         </tr>
-      </thead>
-      <tbody>
-        <% @deliveries.each do |delivery| %>
         <tr>
-          <td><%= delivery.post_code %></td>
-          <td><%= delivery.address %></td>
-          <td><%= delivery.name %></td>
-          <td>
-            <%= link_to "編集する", edit_delivery_path(delivery) %>
-            <%= link_to "削除する", delivery_path(delivery), method: :delete %>
-          </td>
+          <th>住所</th>
+          <th colspan="3"><%= f.text_field :address, size: "50x30",  placeholder: "東京都渋谷区代々木神園町0-0", style: "border-radius:8px;" %></th>
+        </tr>
+        <tr>
+          <th>宛名</th>
+          <th><%= f.text_field :name, placeholder: "令和道子", style: "border-radius:8px;" %></th>
+          <th></th>
+          <th><%= f.submit "新規登録", class: "btn btn-success btn-block", size: "20x30" %></th>
         </tr>
         <% end %>
-      </tbody>
-    </table>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table table-bordered">
+        <thead class="bg-light">
+          <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class="text-left">
+          <% @deliveries.each do |delivery| %>
+          <tr>
+            <td class="align-middle" width="15%"><%= delivery.post_code %></td>
+            <td class="align-middle" width="40%"><%= delivery.address %></td>
+            <td class="align-middle" width="15%"><%= delivery.name %></td>
+            <td class="text-center" width="30%">
+              <%= link_to "編集する", edit_delivery_path(delivery), class: "btn btn-success btn-sm" %>
+              <%= link_to "削除する", delivery_path(delivery), method: :delete, class: "btn btn-danger btn-sm" %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
