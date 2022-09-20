@@ -5,7 +5,8 @@ class Public::CartItemsController < ApplicationController
     if @cart_item.save
       redirect_to cart_items_path
     else
-      redirect_to items_path(params[:item_id])
+      id = @cart_item.item_id
+      redirect_to item_path(id)
     end
 
   end
