@@ -1,2 +1,51 @@
-<h1>Public::Deliveies#index</h1>
-<p>Find me in app/views/public/deliveies/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 offset-col-md-2">
+      <h1>配送先登録/一覧</h1>
+    </div>
+    <table class="table table-borderless">
+      <%= form_with model: @delivery, url: deliveries_path, method: :post do |f| %>
+      <tr>
+        <th>郵便番号(ハイフンなし)</th>
+        <th><%= f.text_field :post_code, placeholder: "0000000" %></th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <th colspan="2"><%= f.text_field :address, size: "45x30",  placeholder: "東京都渋谷区代々木神園町0-0" %></th>
+      </tr>
+      <tr>
+        <th>宛名</th>
+        <th><%= f.text_field :name, placeholder: "令和道子" %></th>
+        <th></th>
+        <th><%= f.submit "新規登録" %></th>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>宛名</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @deliveries.each do |delivery| %>
+        <tr>
+          <td><%= delivery.post_code %></td>
+          <td><%= delivery.address %></td>
+          <td><%= delivery.name %></td>
+          <td>
+            <%= link_to "編集する", edit_delivery_path(delivery) %>
+            <%= link_to "削除する", delivery_path(delivery), method: :delete %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

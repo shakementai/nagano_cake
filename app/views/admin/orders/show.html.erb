@@ -1,2 +1,33 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container">
+  <h3 class="px-3 mb-5" style="width: fit-content; background-color: #e6e6e6;">注文履歴詳細</h3>
+  <table>
+    <tbody>
+      <tr>
+        <td><span class="mr-5">購入者</span></td>
+        <td><%= @order.customer.name %></td>
+      </tr>
+      <tr>
+        <td><span class="mr-5">注文日</span></td>
+        <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+      <tr>
+        <td><span class="mr-5">配送先</span></td>
+        <td><%= @order.address %></td>
+      </tr>
+      <tr>
+        <td><span class="mr-5">支払方法</span></td>
+        <td><%= @order.with_tax_price.to_s(:delimited) %> (<%= @item.without_tax.to_s(:delimited) %>) 円</td>
+      </tr>
+      <tr>
+        <td><span class="mr-5">販売ステータス</span></td>
+        <td>
+          <% if @order.is_active == true %>
+              <span class="text-success font-weight-bold">販売中</span>
+            <% else %>
+              <span class="text-secondary font-weight-bold">販売停止中</span>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

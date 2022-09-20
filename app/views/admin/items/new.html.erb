@@ -4,6 +4,7 @@
     <table>
       <tbody>
         <%= form_with model: [:admin, @item] do |f| %>
+          <%= render 'layouts/errors', obj: @item %>
           <tr>
             <td><span class="mr-5">商品画像</span></td>
             <td><%= f.file_field :image, accept: "image/*" %></td>
