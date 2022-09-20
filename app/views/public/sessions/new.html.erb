@@ -9,9 +9,9 @@
       <h5 class="text-center bg-light">会員の方はこちらからログイン</h5>
     </div>
   </div>
-  <div class="row mx-auto text-center">
+  <div class="row">
     <%= form_with model: @customer, url: customer_session_path do |f| %>
-      <table class="table table-borderless">
+      <table class="table table-borderless text-center mx-auto">
         <tr>
           <th><span>メールアドレス</span></th>
           <th><%= f.email_field :email, autofocus: true, autocomplete: "email" %></th>
