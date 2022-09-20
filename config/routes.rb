@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:create, :index, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
+    resources :genres, only: [:show]
   end
 
   get 'customers/my_page' => 'public/customers#show', as: 'my_page'
