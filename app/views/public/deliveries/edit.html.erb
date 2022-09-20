@@ -1,28 +1,30 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4 offset-md-2">
-      <h3>配送先編集画面</h3>
+    <div class="col-md-3 offset-md-1 mb-5">
+      <h3 class="text-center bg-light">配送先編集画面</h3>
     </div>
   </div>
   <div class="row">
+    <div class="col-md-11">
     <%= form_with model: @delivery, url: delivery_path, method: :patch do |f| %>
     <table class="table table-borderless">
       <tr>
         <th>郵便番号(ハイフンなし)</th>
-        <th><%= f.text_field :post_code, placeholder: "0000000" %></th>
+        <th><%= f.text_field :post_code, placeholder: "0000000", style: "border-radius: 8px;" %></th>
         <th></th>
       </tr>
       <tr>
         <th>住所</th>
-        <th colspan="2"><%= f.text_field :address, size: "45x30",  placeholder: "東京都渋谷区代々木神園町0-0" %></th>
+        <th colspan="2"><%= f.text_field :address, size: "55x30",  placeholder: "東京都渋谷区代々木神園町0-0", style: "border-radius: 8px;" %></th>
       </tr>
       <tr>
         <th>宛名</th>
-        <th><%= f.text_field :name, placeholder: "令和道子" %></th>
+        <th><%= f.text_field :name, placeholder: "令和道子", style: "border-radius: 8px;" %></th>
         <th></th>
-        <th><%= f.submit "変更内容を保存" %></th>
+        <th><%= f.submit "変更内容を保存", class: "btn btn-success" %></th>
       </tr>
     </table>
     <% end %>
+    </div>
   </div>
 </div>
