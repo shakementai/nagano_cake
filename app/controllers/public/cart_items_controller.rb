@@ -1,9 +1,5 @@
 class Public::CartItemsController < ApplicationController
 
-  def index
-    @cart_items = CartItem.all
-  end
-
   def create
     @cart_item = CartItem.new(cart_item_params)
     if @cart_item.save
@@ -12,6 +8,12 @@ class Public::CartItemsController < ApplicationController
       redirect_to items_path(params[:item_id])
     end
 
+  end
+
+  def index
+    cart = current_customer.cart_items
+    @cart_items = cart.all
+    # @total_plice = self.
   end
 
   private
