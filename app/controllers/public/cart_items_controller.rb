@@ -1,9 +1,5 @@
 class Public::CartItemsController < ApplicationController
 
-  def index
-    @cart_items = CartItem.all
-  end
-
   def create
     @cart_item = CartItem.new(cart_item_params)
     if @cart_item.save
@@ -12,6 +8,29 @@ class Public::CartItemsController < ApplicationController
       redirect_to items_path(params[:item_id])
     end
 
+  end
+
+  def index
+    cart = current_customer.cart_items
+    @cart_items = cart.all
+    @total_plice = 0
+  end
+
+  def update
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(amount: params[:amount])
+    redirect_to cart_items_path
+  end
+
+  def destroy
+    item = Item.find(params[:id])
+    CartItem.find_by(item_id: item.id).destroy
+    redirect_to cart_items_path
+  end
+
+  def destroy_all
+    current_customer.cart_items.destroy_all
+    redirect_to cart_items_path
   end
 
   private
