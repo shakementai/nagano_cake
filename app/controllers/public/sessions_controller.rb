@@ -24,13 +24,22 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-
-  def after_sign_in_path_for(current_customer)
-    root_path
-  end
+  before_action :customer_state, only: [:create]
 
   def after_sign_out_path_for(current_customer)
     root_path
+  end
+
+  protected
+
+  def customer_state
+    @customer = Customer.find_by(email: params[:customer][:email])
+    return if !@customer
+    if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted == true
+      redirect_to new_customer_registration_path
+    else
+      root_path
+    end
   end
 
 
