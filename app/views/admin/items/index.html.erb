@@ -19,8 +19,8 @@
       <% @items.each do |item| %>
         <tr>
           <td><%= item.id %></td>
-          <td>
-            <%= link_to admin_item_path(item.id) do %>
+          <td style="text-decoration: underline;">
+            <%= link_to admin_item_path(item.id), class: "text-dark" do %>
               <%= item.name %>
             <% end %>
           </td>
