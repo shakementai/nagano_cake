@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update] do
       resources :order_items, only: [:update]
     end
+    get 'customers/:id/orders' => 'orders#index', as: 'customer_orders'
     root to: 'homes#top'
   end
 
