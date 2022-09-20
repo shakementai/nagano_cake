@@ -2,18 +2,19 @@
   <div class="row">
     <div class="col-md-5 offset-md-2">
       <h3>新規会員登録</h3>
+      <h1>　</h1>
     </div>
   </div>
   <div class="row">
     <%= form_with model: @customer, url: customer_registration_path do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
       <table class="table table-borderless">
-        <tr width="100%">
-          <th width="34%"><span>名前</span></th>
-          <th width="10%">(姓)</th>
-          <th width="23%"><%= f.text_field :last_name, :placeholder => "令和" %></th>
-          <th width="10%">(名)</th>
-          <th width="23%"><%= f.text_field :first_name, :placeholder => "道子" %></th>
+        <tr>
+          <th><span>名前</span></th>
+          <th>(姓)</th>
+          <th><%= f.text_field :last_name, :placeholder => "令和" %></th>
+          <th>(名)</th>
+          <th><%= f.text_field :first_name, :placeholder => "道子" %></th>
         </tr>
 
         <tr>
@@ -28,8 +29,6 @@
           <th><span>メールアドレス</span></th>
           <th></th>
           <th><%= f.email_field :email, autocomplete: "email", :placeholder => "sample@example.com" %></th>
-          <th></th>
-          <th></th>
         </tr>
 
         <tr>
@@ -43,7 +42,7 @@
         <tr>
           <th><span>住所</span></th>
           <th></th>
-          <th colspan="3"><%= f.text_field :address, :placeholder => "東京都渋谷区代々木神園町0-0" %></th>
+          <th colspan="3"><%= f.text_field :address, :placeholder => "東京都渋谷区代々木神園町0-0", size: "53x30" %></th>
         </tr>
 
         <tr>
