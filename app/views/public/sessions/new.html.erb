@@ -10,17 +10,34 @@
     </div>
   </div>
   <div class="row">
+    <div class="col-md-8 mx-auto">
     <%= form_with model: @customer, url: customer_session_path do |f| %>
-      <table class="table table-borderless text-center mx-auto">
+      <table class="table table-borderless">
         <tr>
-          <th><span>メールアドレス</span></th>
-          <th><%= f.email_field :email, autofocus: true, autocomplete: "email" %></th>
+          <th width="20%"><span>メールアドレス</span></th>
+          <th width="80%"><%= f.email_field :email, autofocus: true, autocomplete: "email", size: "50x30", style: "border-radius:8px;" %></th>
         </tr>
         <tr>
           <th>パスワード</th>
-          <th><%= f.password_field :password, autocomplete: "current-password" %></th>
+          <th><%= f.password_field :password, autocomplete: "current-password", size: "50x30", style: "border-radius:8px;" %></th>
+        </tr>
+
+        <tr>
+          <th></th>
+          <th><%= f.submit "ログイン", class: "btn btn-primary" %></th>
         </tr>
       </table>
     <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 offset-md-1">
+      <h5 class="text-center bg-light">会員登録がお済みでない方</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-log-4 offset-md-3">
+      <%= link_to "こちら", new_customer_registration_path %>　から新規登録を行ってください。
+    </div>
   </div>
 </div>
