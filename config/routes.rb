@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   post 'orders/confirm' => 'public/orders#confirm', as: 'confirm'
   get 'orders/complete' => 'public/orders#complete', as: 'complete'
 
+  delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all', as: 'destroy_all'
+
   scope module: :public do
     resources :orders, only: [:new, :index, :show, :create]
     resources :cart_items, only: [:create, :index, :update, :destroy]
@@ -29,8 +31,6 @@ Rails.application.routes.draw do
   #退会機能
   get 'customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe'
   patch 'customers/withdraw' => 'public/customers#withdraw', as: 'withdraw'
-
-  delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all', as: 'destroy_all'
 
   get 'about' => 'public/homes#about', as: 'about'
   root to: 'public/homes#top'
