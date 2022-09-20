@@ -24,3 +24,13 @@
 .prev,{
   margin: 3px;
 }
+
+.item-link a{
+  text-decoration: none;
+  color: black;
+}
+.item-link a:hover,
+.genre-link:hover{
+  background-color: rgba(0,0,0,0.1);
+  transition: 0.2s;
+}

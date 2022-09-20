@@ -6,13 +6,13 @@
 
     <div class="col-10">
 
-      <h2 class="mb-4"><%= @genre.name %>一覧<span class="small">(全<%= @genre_items.count %>件)</span></h2>
+      <h2 class="mb-4"><%= @genre.name %> 一覧<span class="small">(全<%= @genre_items_all.count %>件)</span></h2>
 
-      <div class="d-flex flex-wrap mb-2">
+      <div class="d-flex flex-wrap item-link">
         <% @genre_items.each do |item| %>
-          <%= link_to item_path(item.id) do %>
-            <div class="mr-3 mb-5">
-              <div style="height: 145px;"><%= image_tag item.get_image(200,150) %></div>
+          <%= link_to item_path(item.id), class: "text-dark text-decoration-none" do %>
+            <div class="m-1 p-1">
+              <div style="height: 145px; padding: 2px;"><%= image_tag item.get_image(200,150) %></div>
               <div><%= item.name %></div>
               <div>¥<%= item.with_tax_price.to_s(:delimited) %></div>
             </div>
