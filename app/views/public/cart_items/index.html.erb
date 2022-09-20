@@ -1,4 +1,5 @@
 <h3>ショッピングカート</h3>
+<%= link_to "カートを空にする", destroy_all_path, method: :delete %>
 <table>
   <thead>
     <tr>
@@ -12,11 +13,15 @@
   <tbody>
     <% @cart_items.each do |cart_item| %>
       <tr>
-        <td><%= cart_item.item.name %></td>
+        <td><%= image_tag cart_item.item.get_image(50, 50) %><%= cart_item.item.name %></td>
         <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
         <td><%= cart_item.amount %></td>
-        <td><%= cart_item.subtotal %></td>
+        <td><%= cart_item.subtotal.to_s(:delimited) %></td>
+        <td><%= link_to "削除する", cart_item_path(cart_item.item_id), method: :delete %></td>
       </tr>
+      <% @total_plice += cart_item.subtotal %>
     <% end %>
   </tbody>
 </table>
+<p>合計金額<%= @total_plice.to_s(:delimited) %></p>
+<%= link_to '買い物を続ける', items_path %>

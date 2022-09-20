@@ -13,7 +13,22 @@ class Public::CartItemsController < ApplicationController
   def index
     cart = current_customer.cart_items
     @cart_items = cart.all
-    # @total_plice = self.
+    @total_plice = 0
+  end
+
+  def update
+
+  end
+
+  def destroy
+    item = Item.find(params[:id])
+    CartItem.find_by(item_id: item.id).destroy
+    redirect_to cart_items_path
+  end
+
+  def destroy_all
+    current_customer.cart_items.destroy_all
+    redirect_to cart_items_path
   end
 
   private
