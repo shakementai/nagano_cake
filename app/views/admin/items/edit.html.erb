@@ -1,8 +1,8 @@
 <div class="container">
   <h3 class="px-3 mb-5" style="width: fit-content; background-color: #e6e6e6;">商品編集</h3>
-  <table>
-    <tbody>
-      <%= form_with model: [:admin, @item] do |f| %>
+  <%= form_with model: [:admin, @item] do |f| %>
+    <table>
+      <tbody>
         <%= render 'layouts/errors', obj: @item %>
         <tr>
           <td><span class="mr-5">商品画像</span></td>
@@ -39,7 +39,7 @@
           <td></td>
           <td><%= f.submit "変更を保存", class: "btn btn-success" %></td>
         </tr>
-      <% end %>
     </tbody>
-  </table>
+    </table>
+  <% end %>
 </div>
