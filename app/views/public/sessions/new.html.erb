@@ -14,17 +14,17 @@
     <%= form_with model: @customer, url: customer_session_path do |f| %>
       <table class="table table-borderless">
         <tr>
-          <th width="20%"><span>メールアドレス</span></th>
-          <th width="80%"><%= f.email_field :email, autofocus: true, autocomplete: "email", size: "50x30", style: "border-radius:8px;" %></th>
+          <td width="20%" class="align-middle"><span>メールアドレス</span></td>
+          <td width="80%"><%= f.email_field :email, autofocus: true, autocomplete: "email", size: "50x30", style: "border-radius:8px;", class: "form-control" %></td>
         </tr>
         <tr>
-          <th>パスワード</th>
-          <th><%= f.password_field :password, autocomplete: "current-password", size: "50x30", style: "border-radius:8px;" %></th>
+          <td class="align-middle">パスワード</td>
+          <td><%= f.password_field :password, autocomplete: "current-password", size: "50x30", style: "border-radius:8px;", class: "form-control" %></td>
         </tr>
 
         <tr>
-          <th></th>
-          <th><%= f.submit "ログイン", class: "btn btn-primary" %></th>
+          <td></td>
+          <td><%= f.submit "ログイン", class: "btn btn-primary mt-4 mb-5", style: "width: 30%;" %></td>
         </tr>
       </table>
     <% end %>

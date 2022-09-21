@@ -9,19 +9,19 @@
     <%= form_with model: @delivery, url: delivery_path, method: :patch do |f| %>
     <table class="table table-borderless">
       <tr>
-        <th>郵便番号(ハイフンなし)</th>
-        <th><%= f.text_field :post_code, placeholder: "0000000", style: "border-radius: 8px;" %></th>
-        <th></th>
+        <td class="align-middle">郵便番号(ハイフンなし)</td>
+        <td><%= f.text_field :post_code, placeholder: "0000000", style: "border-radius: 8px; width: 40%", class: "form-control" %></td>
+        <td></td>
       </tr>
       <tr>
-        <th>住所</th>
-        <th colspan="2"><%= f.text_field :address, size: "55x30",  placeholder: "東京都渋谷区代々木神園町0-0", style: "border-radius: 8px;" %></th>
+        <td class="align-middle">住所</td>
+        <td colspan="2"><%= f.text_field :address, size: "55x30",  placeholder: "東京都渋谷区代々木神園町0-0", style: "border-radius: 8px;", class: "form-control" %></td>
       </tr>
       <tr>
-        <th>宛名</th>
-        <th><%= f.text_field :name, placeholder: "令和道子", style: "border-radius: 8px;" %></th>
-        <th></th>
-        <th><%= f.submit "変更内容を保存", class: "btn btn-success" %></th>
+        <td class="align-middle">宛名</td>
+        <td><%= f.text_field :name, placeholder: "令和道子", style: "border-radius: 8px; width: 40%", class: "form-control" %></td>
+        <td></td>
+        <td><%= f.submit "変更内容を保存", class: "btn btn-success" %></td>
       </tr>
     </table>
     <% end %>
