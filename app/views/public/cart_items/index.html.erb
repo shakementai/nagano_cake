@@ -9,6 +9,9 @@
   </div>
 
 <div class="col-11 mx-auto">
+  <% if @cart.blank? %>
+  <h5 class="text-danger" style="margin: 40px;">カートの中身は空です</h5>
+  <% else %>
   <table class="table table-bordered">
     <thead>
       <tr class="table-secondary">
@@ -37,19 +40,22 @@
       <% end %>
     </tbody>
   </table>
+  <% end %>
 
-  <table class="float-right">
-    <tr>
+  <table class="float-right border border-dark">
+    <tr class="">
       <th class="border table-secondary" style="width: 100px; height: 100px;">合計金額</th>
       <th class="border" style="width: 100px;"><%= @total_plice.to_s(:delimited) %></th>
     </tr>
-    <%= link_to '買い物を続ける', root_path %>
-  </div>
+    <%= link_to '買い物を続ける', root_path, class: "btn btn-primary" %>
+  </table>
 
 </div>
 
-<% unless @cart.blank? %>
-  <%= link_to '情報入力に進む', new_order_path %>
-<% end %>
+  <div class="text-center">
+    <% unless @cart.blank? %>
+      <%= link_to '情報入力に進む', new_order_path %>
+    <% end %>
+  </div>
 
 </div>
