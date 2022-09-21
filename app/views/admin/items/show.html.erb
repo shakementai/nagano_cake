@@ -1,41 +1,42 @@
 <div class="container">
-  <h3 class="px-3 mb-5" style="width: fit-content; background-color: #e6e6e6;">商品詳細</h3>
+  <h3 class="px-3 mb-5 ml-5" style="width: fit-content; background-color: #e6e6e6;">商品詳細</h3>
   <div class="row">
-    <div class="col-6">
+    <div class="col-5">
       <%= image_tag @item.get_image(300,300) %>
     </div>
-    <div class="col-6">
-      <table>
+    <div class="col-7">
+      <table class="table table-borderless">
         <tbody>
           <tr>
-            <td><span class="mr-5">商品名</span></td>
+            <td><div>商品名</div></td>
             <td><%= @item.name %></td>
           </tr>
           <tr>
-            <td><span class="mr-5">商品説明</span></td>
+            <td><div>商品説明</div></td>
             <td><%= @item.explanation %></td>
           </tr>
           <tr>
-            <td><span class="mr-5">ジャンル</span></td>
+            <td><div>ジャンル</div></td>
             <td><%= @item.genre.name %></td>
           </tr>
           <tr>
-            <td><span class="mr-5">税込価格<br>(税抜価格)</span></td>
+            <td><div>税込価格<br>(税抜価格)</div></td>
             <td><%= @item.with_tax_price.to_s(:delimited) %> (<%= @item.without_tax.to_s(:delimited) %>) 円</td>
           </tr>
           <tr>
-            <td><span class="mr-5">販売ステータス</span></td>
+            <td style="width: 160px;"><div class="mr-3">販売ステータス</div></td>
             <td>
               <% if @item.is_active == true %>
-                  <span class="text-success font-weight-bold">販売中</span>
-                <% else %>
-                  <span class="text-secondary font-weight-bold">販売停止中</span>
+                <span class="text-success font-weight-bold">販売中</span>
+              <% else %>
+                <span class="text-secondary font-weight-bold">販売停止中</span>
               <% end %>
             </td>
           </tr>
         </tbody>
       </table>
-      <td><%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %></td>
+      <span class="px-5"></span>
+      <span class="ml-5"><%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %></span>
     </div>
   </div>
 </div>
