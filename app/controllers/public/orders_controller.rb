@@ -3,9 +3,17 @@ class Public::OrdersController < ApplicationController
     @deliveries = Delivery.where(customer_id: current_customer.id)
     @order = Order.new
   end
+  
+  def confirm
+    
+  end
 
   def complete
 
+  end
+  
+  def index
+    
   end
 
   def index
