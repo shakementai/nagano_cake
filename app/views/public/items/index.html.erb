@@ -8,7 +8,7 @@
 
       <h2 class="mb-4">商品一覧<span class="small">(全<%= @items_all.count %>件)</span></h2>
 
-      <div class="d-flex flex-wrap item-link">
+      <div class="d-flex flex-wrap item-link mb-5">
         <% @items.each do |item| %>
           <%= link_to item_path(item.id), class: "text-dark text-decoration-none" do %>
             <div class="m-1 p-1">
