@@ -7,7 +7,7 @@
   <div class="row">
     <%= form_with model: @customer, url: customer_registration_path do |f| %>
       <%= render "layouts/errors", obj: @customer %>
-      <table class="table table-borderless">
+      <table class="table table-borderless table-sm">
         <tr>
           <td class="align-middle"><span>名前</span></td>
           <td class="align-middle">(性)</td>
