@@ -7,7 +7,15 @@ class Public::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @genres = Genre.all
     @cart_item = CartItem.new
+    @genres = Genre.all
+  end
+  
+  def search
+    @items = Item.search(params[:word]).page(params[(:page)])
+    @word = params[:word]
+    @items_all = Item.search(params[:word])
+    @genres = Genre.all
+    render :index
   end
 end
