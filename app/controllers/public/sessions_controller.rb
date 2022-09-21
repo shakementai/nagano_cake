@@ -30,6 +30,10 @@ class Public::SessionsController < Devise::SessionsController
     root_path
   end
 
+  def after_sign_in_path_for(current_customer)
+    root_path
+  end
+
   protected
 
   def customer_state
@@ -37,8 +41,6 @@ class Public::SessionsController < Devise::SessionsController
     return if !@customer
     if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted == true
       redirect_to new_customer_registration_path
-    else
-      root_path
     end
   end
 
