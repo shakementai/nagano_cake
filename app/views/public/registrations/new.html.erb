@@ -1,67 +1,85 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5 offset-md-2">
-      <h3>新規会員登録</h3>
+    <div class="col-md-3 mb-5">
+      <h3 class="text-center bg-light">新規会員登録</h3>
     </div>
   </div>
   <div class="row">
     <%= form_with model: @customer, url: customer_registration_path do |f| %>
-      <%= render "public/shared/error_messages", resource: resource %>
+      <%= render "layouts/errors", obj: @customer %>
       <table class="table table-borderless">
         <tr>
           <th><span>名前</span></th>
-          <th><%= f.text_field :last_name, :placeholder => "令和" %></th>
-          <th><%= f.text_field :first_name, :placeholder => "道子" %></th>
+          <th>(性)</th>
+          <th><%= f.text_field :last_name, placeholder: "令和", style: "border-radius: 8px;" %></th>
+          <th>(名)</th>
+          <th><%= f.text_field :first_name, placeholder: "道子", style: "border-radius: 8px;" %></th>
         </tr>
 
         <tr>
           <th><span>フリガナ</span></th>
-          <th><%= f.text_field :last_kana_name,:placeholder => "レイワ" %></th>
-          <th><%= f.text_field :first_kana_name, :placeholder => "ミチコ" %></th>
+          <th>(セイ)</th>
+          <th><%= f.text_field :last_kana_name, placeholder: "レイワ", style: "border-radius: 8px;" %></th>
+          <th>(メイ)</th>
+          <th><%= f.text_field :first_kana_name, placeholder: "ミチコ", style: "border-radius: 8px;" %></th>
         </tr>
 
         <tr>
           <th><span>メールアドレス</span></th>
-          <th><%= f.email_field :email, autocomplete: "email", :placeholder => "sample@example.com" %></th>
+          <th></th>
+          <th><%= f.email_field :email, autocomplete: "email", placeholder: "sample@example.com", style: "border-radius: 8px;" %></th>
         </tr>
 
         <tr>
           <th><span>郵便番号(ハイフンなし)</span></th>
-          <th><%= f.text_field :post_code, :placeholder => "0000000" %></th>
+          <th></th>
+          <th><%= f.text_field :post_code, placeholder: "0000000", style: "border-radius: 8px;" %></th>
         </tr>
 
         <tr>
           <th><span>住所</span></th>
-          <th colspan="2"><%= f.text_field :address, :placeholder => "東京都渋谷区代々木神園町0-0", size: "45x20" %></th>
+          <th></th>
+          <th colspan="3"><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", size: "55x20", style: "border-radius: 8px;" %></th>
         </tr>
 
         <tr>
           <th>電話番号(ハイフンなし)</th>
-          <th><%= f.text_field :phone_number, :placeholder => "0000000000" %></th>
+          <th></th>
+          <th><%= f.text_field :phone_number, placeholder: "0000000000", style: "border-radius: 8px;" %></th>
         </tr>
 
         <tr>
           <th><span>パスワード(6文字以上)</span></th>
-          <th><%= f.password_field :password, autocomplete: "new-password" %></th>
+          <th></th>
+          <th><%= f.password_field :password, autocomplete: "new-password", style: "border-radius: 8px;" %></th>
         </tr>
 
         <tr>
           <th><span>パスワード(確認用)</span></th>
-          <th><%= f.password_field :password_confirmation, autocomplete: "new-password" %></th>
+          <th></th>
+          <th><%= f.password_field :password_confirmation, autocomplete: "new-password", style: "border-radius: 8px;" %></th>
         </tr>
 
         <tr>
           <th></th>
-          <th><%= f.submit "新規登録", class: "btn btn-success" %></th>
+          <th></th>
+          <th><%= f.submit "新規登録", class: "btn btn-success btn-block" %></th>
         </tr>
       </table>
     <% end %>
   </div>
   <div class="row">
-    <div class="col-md-5 offset-md-2">
-      <h3>既に登録済みの方</h3>
+    <div class="col-md-3 bg-light mb-3">
+      <h3 class="text-center">既に登録済みの方</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 text-right">
       <%= link_to "こちら", new_session_path(resource_name) %> からログインしてください。
     </div>
   </div>
 </div>
+
+
+
 
