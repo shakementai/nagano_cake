@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
 
   def create
     @cart_item = CartItem.new(cart_item_params)
@@ -7,14 +8,14 @@ class Public::CartItemsController < ApplicationController
       redirect_to cart_items_path
     else
       @genres = Genre.all
-      render "public/items/show"
+      render 'no_amount'
     end
 
   end
 
   def index
-    cart = current_customer.cart_items
-    @cart_items = cart.all
+    @cart = current_customer.cart_items
+    @cart_items = @cart.all
     @total_plice = 0
   end
 
