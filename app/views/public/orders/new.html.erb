@@ -11,5 +11,5 @@
 
 <p>お届け先</p>
 <%= form_with model: @order do |f| %>
-  <%= f.select :address_id, options_from_collection_for_select(Delivery.all, :id, :address_display) %>
+  <%= f.select :address_id, options_from_collection_for_select(@deliveries, :id, :address_display) %>
 <% end %>

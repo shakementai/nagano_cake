@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
   def new
+    @deliveries = Delivery.where(customer_id: current_customer.id)
     @order = Order.new
   end
 
