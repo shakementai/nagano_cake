@@ -2,10 +2,12 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart_item = CartItem.new(cart_item_params)
+    @item = Item.find_by(id: @cart_item.item_id)
     if @cart_item.save
       redirect_to cart_items_path
     else
-      redirect_to items_path(params[:item_id])
+      @genres = Genre.all
+      render "public/items/show"
     end
 
   end
