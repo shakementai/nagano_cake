@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <h3 class="px-3 mb-5" style= "width: fit-content; background-color: #e6e6e6;">商品一覧</h3>
+    <h3 class="px-3 mb-5 ml-5" style= "width: fit-content; background-color: #efefef;">商品一覧</h3>
     <div class="ml-auto mr-3">
       <%= link_to "+", new_admin_item_path, class: "btn btn-outline-secondary rounded-circle shadow" %>
     </div>
   </div>
-  <table class="table table-hover table-inverse">
-    <thead>
+  <table class="table table-hover">
+    <thead style= "width: fit-content; background-color: #efefef;">
       <tr>
         <th>商品ID</th>
         <th>商品名</th>
@@ -15,12 +15,12 @@
         <th>ステータス</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="table table-borderless">
       <% @items.each do |item| %>
         <tr>
           <td><%= item.id %></td>
-          <td>
-            <%= link_to admin_item_path(item.id) do %>
+          <td style="text-decoration: underline;">
+            <%= link_to admin_item_path(item.id), class: "text-dark" do %>
               <%= item.name %>
             <% end %>
           </td>
