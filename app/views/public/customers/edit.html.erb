@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5">
-      <h3>会員情報編集画面</h3>
+    <div class="col-md-3 offset-md-1 mb-5">
+      <h4 class="text-center bg-light">会員情報編集画面</h4>
     </div>
   </div>
   <div class="row">
@@ -9,35 +9,35 @@
       <%= form_with model: @customer, url: information_path, method: :patch do |f| %>
         <table class="table table-borderless">
           <tr>
-            <th><span>氏名</span></th>
-            <th><%= f.text_field :last_name %></th>
-            <th><%= f.text_field :first_name %></th>
+            <td><span>氏名</span></td>
+            <td><%= f.text_field :last_name, style: "border-radius: 8px;" %></td>
+            <td><%= f.text_field :first_name, style: "border-radius: 8px;" %></td>
           </tr>
           <tr>
-            <th><span>フリガナ</span></th>
-            <th><%= f.text_field :last_kana_name %></th>
-            <th><%= f.text_field :first_kana_name %></th>
+            <td><span>フリガナ</span></td>
+            <td><%= f.text_field :last_kana_name, style: "border-radius: 8px;" %></td>
+            <td><%= f.text_field :first_kana_name, style: "border-radius: 8px;" %></td>
           </tr>
           <tr>
-            <th><span>郵便番号</span></th>
-            <th><%= f.text_field :post_code %></th>
+            <td><span>郵便番号</span></td>
+            <td><%= f.text_field :post_code, style: "border-radius: 8px;" %></td>
           </tr>
           <tr>
-            <th>住所</th>
-            <th colspan="3"><%= f.text_field :address, size:"65x30" %></th>
+            <td>住所</td>
+            <td colspan="3"><%= f.text_field :address, size: "65x30", style: "border-radius: 8px;" %></td>
           </tr>
           <tr>
-            <th>電話番号</th>
-            <th><%= f.text_field :phone_number %></th>
+            <td>電話番号</td>
+            <td><%= f.text_field :phone_number, style: "border-radius: 8px;" %></td>
           </tr>
           <tr>
-            <th>メールアドレス</th>
-            <th><%= f.email_field :email %></th>
+            <td>メールアドレス</td>
+            <td><%= f.email_field :email, style: "border-radius: 8px;" %></td>
           </tr>
           <tr>
-            <th></th>
-            <th colspan="2"><%= f.submit "編集内容を保存" %></th>
-            <th><%= link_to "退会する", unsubscribe_path(@customer.id) %></th>
+            <td></td>
+            <td colspan="2"><%= f.submit "編集内容を保存", class: "btn btn-success", style: "width: 280px;" %></td>
+            <td><%= link_to "退会する", unsubscribe_path(@customer.id), class: "btn btn-danger" %></td>
           </tr>
         </table>
       <% end %>
