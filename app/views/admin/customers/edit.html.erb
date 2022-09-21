@@ -34,7 +34,7 @@
 
         <tr>
           <th><span>住所</span></th>
-          <th><%= f.text_field :address,class: "col-8" %></th>
+          <th><%= f.text_field :address, size: 50 %></th>
         </tr>
 
         <tr>
@@ -52,7 +52,7 @@
           <th>
             <%= f.radio_button :is_deleted, false %>
             <%= f.label :is_deleted, '有効', value: false %>
-            <span class="ml-3"><%= f.radio_button :is_deleted, true %></span>
+            <%= f.radio_button :is_deleted, true, class: "ml-3" %>
             <%= f.label :is_deleted, '退会', value: true %>
           </th>
         </tr>
