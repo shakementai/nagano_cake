@@ -21,5 +21,9 @@ class Item < ApplicationRecord
   def with_tax_price
     (without_tax * 1.1).floor
   end
+  
+  def self.search(word)
+    where(["name like?", "%#{word}%"])
+  end
 
 end

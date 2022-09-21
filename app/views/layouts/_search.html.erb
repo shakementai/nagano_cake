@@ -1,0 +1,6 @@
+<div>
+  <%= form_with url: item_search_path, method: :get do |f| %>
+  <%= f.text_field :word, value: obj %>
+  <% f.submit %>
+  <% end %>
+</div>
