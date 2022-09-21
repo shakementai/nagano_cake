@@ -59,12 +59,9 @@
       </div>
     </div>
   </nav>
-  <% if customer_signed_in? || admin_signed_in? %>
-    <div class="text-right pb-2" style="margin-right: 165px;">
-      <%= form_with url: search_path, method: :get do |f| %>
-      <%= f.text_field :word, value: @word %>
-      <% f.submit %>
-      <% end %>
-    </div>
-  <% end %>
+  <div class="text-right pb-2" style="margin-right: 165px;">
+    <% if customer_signed_in? || admin_signed_in? %>
+      <%= render 'layouts/search', obj: @word %>
+    <% end %>
+  </div>
 </header>
