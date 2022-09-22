@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   get 'about' => 'public/homes#about', as: 'about'
   root to: 'public/homes#top'
 
+  get 'search' => 'public/items#search'
+
 
   # 顧客用
   # URL /customers/sign_in ...

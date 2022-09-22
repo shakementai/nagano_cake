@@ -1,6 +1,14 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+#top-logo{
+  font-family: 'Kaisei Decol', serif;
+}
+
+#genre-list{
+  font-family: 'Nico Moji';
+}
+
 .jumbotron{
   background-image: url("/assets/cropMMK_settingsaretacake");
   background-size: cover;

@@ -9,19 +9,20 @@
       <%= form_with model: @delivery, url: deliveries_path, method: :post do |f| %>
         <table class="table table-borderless mx-left">
           <tr>
-            <th>郵便番号(ハイフンなし)</th>
-            <th><%= f.text_field :post_code, placeholder: "0000000", style: "border-radius:8px;" %></th>
-            <th></th>
+            <td class="align-middle" width="25%">郵便番号(ハイフンなし)</td>
+            <td width="50%"><%= f.text_field :post_code, placeholder: "0000000", style: "border-radius:8px; width: 50%;", class: "form-control" %></td>
+            <td width="15%"></td>
+            <td width="10%"></td>
           </tr>
           <tr>
-            <th>住所</th>
-            <th colspan="3"><%= f.text_field :address, size: "50x30",  placeholder: "東京都渋谷区代々木神園町0-0", style: "border-radius:8px;" %></th>
+            <td class="align-middle">住所</td>
+            <td colspan="2"><%= f.text_field :address, size: "x30",  placeholder: "東京都渋谷区代々木神園町0-0", style: "border-radius:8px;", class: "form-control" %></td>
           </tr>
           <tr>
-            <th>宛名</th>
-            <th><%= f.text_field :name, placeholder: "令和道子", style: "border-radius:8px;" %></th>
-            <th></th>
-            <th><%= f.submit "新規登録", class: "btn btn-success btn-block", size: "20x30" %></th>
+            <td>宛名</td>
+            <td><%= f.text_field :name, placeholder: "令和道子", style: "border-radius:8px; width: 50%;", class: "form-control" %></td>
+            <td></td>
+            <td><%= f.submit "新規登録", class: "btn btn-success btn-block", style: "width: 100%" %></td>
           </tr>
         </table>
       <% end %>
