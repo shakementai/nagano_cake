@@ -18,8 +18,8 @@
           〒 <%= order.post_code %><br><%= order.address %><br><%= order.name %>
         </td>
         <td class="align-middle">
-        <% @order_items.each do |order_item| %>
-          <%= order_item.item.name %>
+        <% order.order_items.each do |order_item| %>
+          <%= order_item.item.name %><br>
         <% end %>
         </td>
         <td class="align-middle"><%= order.total_price.to_s(:delimited) %>円</td>
