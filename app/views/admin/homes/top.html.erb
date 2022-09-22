@@ -15,14 +15,14 @@
       <tbody>
         <% @orders.each do |order| %>
         <tr>
-          <td>
+          <td style="text-decoration: underline;">
             <%= link_to admin_order_path(order) do %>
               <%= order.created_at.strftime('%Y/%m/%d/%H:%M') %>
             <% end %>
           </td>
-          <td><%= order.customer.name %></td>
-          <td><%= order.order_items.amount.count %></td>
-          <td><%= order.order_status %></td>
+          <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+          <td><%#= order.order_items.amount.count %></td>
+          <td><%= order.order_status_i18n %></td>
         </tr>
         <% end %>
       </tbody>
