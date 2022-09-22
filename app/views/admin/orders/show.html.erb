@@ -21,7 +21,10 @@
       <tr>
         <td><span class="mr-5">注文ステータス</span></td>
         <td>
-          <%= @order.order_status_i18n %>
+          <%= form_with model: [:admin, @order] do |f| %>
+            <div class="mb-2"><%= f.collection_select :order_status, Order.order_statuses_i18n, :first, :last, style: "width: 50%" %></div>
+            <%= f.submit "更新", class: "btn btn-success" %>
+          <% end %>
         </td>
       </tr>
     </tbody>
