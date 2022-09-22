@@ -1,14 +1,13 @@
-<div class="container">
-  <h3 class="px-3 mb-5" style="width: fit-content; background-color: #e6e6e6;">注文履歴一覧</h3>
-  <table class="table table-bordered">
+  <h3 class="px-3 mb-5 text-center" style="width: fit-content; background-color: #e6e6e6; margin-left: 15%">注文履歴一覧</h3>
+  <table class="table table-bordered mx-auto" style="width: 95%;">
     <thead style="background-color: #efefef;">
       <tr>
-        <th class="border">注文日</th>
-        <th class="border">配送先</th>
-        <th class="border">注文商品</th>
-        <th class="border">支払金額</th>
-        <th class="border">ステータス</th>
-        <th class="border">注文詳細</th>
+        <th class="border" width="10%">注文日</th>
+        <th class="border" width="53%">配送先</th>
+        <th class="border" width="10%">注文商品</th>
+        <th class="border" width="7%">支払金額</th>
+        <th class="border" width="10%">ステータス</th>
+        <th class="border" width="10%">注文詳細</th>
       </tr>
     </thead>
     <tbody>
@@ -16,14 +15,17 @@
       <tr>
         <td class="align-middle"><%= order.created_at.strftime('%Y/%m/%d') %></td>
         <td class="align-middle">
-          <%= order.post_code %><br><%= order.address %><br><%= order.name %>
+          〒 <%= order.post_code %><br><%= order.address %><br><%= order.name %>
         </td>
-        <td class="align-middle"><%=  %></td>
-        <td class="align-middle"><%= order.total_price %></td>
-        <td class="align-middle"><%= order.order_status  %></td>
-        <td class="align-middle"><%= link_to "表示する", order_path(order) %></td>
+        <td class="align-middle">
+        <% order.order_items.each do |order_item| %>
+          <%= order_item.item.name %><br>
+        <% end %>
+        </td>
+        <td class="align-middle"><%= order.total_price.to_s(:delimited) %>円</td>
+        <td class="align-middle"><%= order.order_status_i18n  %></td>
+        <td class="align-middle text-center"><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
-</div>
