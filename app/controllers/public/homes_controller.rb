@@ -1,7 +1,7 @@
 class Public::HomesController < ApplicationController
   def top
     @items = Item.all.order(created_at: :desc)
-    @orders = Order.all
+    @genres = Genre.all
   end
 
   def about
