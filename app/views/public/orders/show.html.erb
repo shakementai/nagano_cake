@@ -1,2 +1,65 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div class="container">
+  <h3 class="px-3 mb-5" style="width: fit-content; background-color: #e6e6e6;">注文履歴詳細</h3>
+  <div class="row">
+    <div class="col-7 mr-1">
+      <p class="font-weight-bold">注文情報</p>
+      <table class="table table-bordered">
+        <tr>
+          <td style="background-color: #efefef; width: 20%;">注文日</td>
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <td style="background-color: #efefef;">配送先</td>
+          <td>〒<%= @order.post_code %><br><%= @order.address %><br><%= @order.name %></td>
+        </tr>
+        <tr>
+          <td style="background-color: #efefef;">支払方法</td>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr>
+          <td style="background-color: #efefef;">ステータス</td>
+          <td><%= @order.order_status_i18n %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-4">
+      <p class="font-weight-bold">請求情報</p>
+      <table class="table table-bordered">
+        <tr>
+          <td style="background-color: #efefef;">商品合計</td>
+          <td><%= @item_all_price.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <td style="background-color: #efefef;">配送料</td>
+          <td><%= @order.shipping_cost.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <th style="background-color: #efefef;">ご請求額</td>
+          <td><%= @order.total_price.to_s(:delimited) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+    <p class="font-weight-bold">注文内容</p>
+    <table class="table table-bordered col-9">
+      <thead style="background-color: #efefef;">
+        <tr>
+          <th class="border" style="width: 60%;">商品</th>
+          <th class="border">単価（税込）</th>
+          <th class="border">個数</th>
+          <th class="border">小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order_items.each do |order_item| %>
+          <tr>
+            <td><%= order_item.item.name %></td>
+            <td><%= order_item.item.with_tax_price %></td>
+            <td><%= order_item.amount %></td>
+            <td><%= order_item.item.with_tax_price * order_item.amount %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+</div>
