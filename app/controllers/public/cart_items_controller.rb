@@ -4,11 +4,25 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @item = Item.find_by(id: @cart_item.item_id)
-    if @cart_item.save
+
+    if current_customer.cart_items.find_by(item_id: @item.id).present?
+      cart_item = current_customer.cart_items.find_by(item_id: @item.id)
+      cart_item.amount += @cart_item.amount.to_i
+      if cart_item.amount > 10
+        flash[:alert] = "購入上限は10点です"
+        redirect_to item_path(@item)
+      elsif @cart_item.amount.to_i == 0
+        flash[:alert] = "個数が選択されていません"
+        redirect_to item_path(@item)
+      else
+        cart_item.save
+        redirect_to cart_items_path
+      end
+    elsif@cart_item.save
       redirect_to cart_items_path
     else
-      @genres = Genre.all
-      render 'no_amount'
+      flash[:alert] = "個数が選択されていません"
+      redirect_to item_path(@item)
     end
 
   end
