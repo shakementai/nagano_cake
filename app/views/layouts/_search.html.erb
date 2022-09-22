@@ -1,4 +1,6 @@
-<%= form_with url: search_path, method: :get do |f| %>
-  <%= f.text_field :word, value: obj %>
-  <% f.submit %>
-<% end %>
+<div class="input-group">
+  <%= form_with url: search_path, method: :get do |f| %>
+    <%= f.text_field :word, value: obj, placeholder: "キーワードを入力", class: "form-control" %>
+    <% f.submit %>
+  <% end %>
+</div>
