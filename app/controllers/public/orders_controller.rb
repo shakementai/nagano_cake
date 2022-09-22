@@ -30,7 +30,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_items = OrderItems.all
+    @order_items = OrderItem.all
   end
 
   private

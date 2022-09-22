@@ -29,7 +29,9 @@
               </div>
             <% end %>
           </div>
-          <h5 class="text-danger"><%= alert%></h5>
+          <div id="no_amount">
+            <%= render 'layouts/errors', obj: @cart_item %>
+          </div>
         </div>
       </div>
     </div>
