@@ -8,10 +8,20 @@ class Public::OrdersController < ApplicationController
     cart = current_customer.cart_items
     @cart_items = cart.all
     @total_price = 0
-    @order = Order.new(order_params)
-    # @order.postal_code = current_customer.postal_code
-    # @order.address = current_customer.address
-    # @order.name = current_customer.first_name + current_customer.last_name
+    if params[:order][:select_address] == "0"
+      @order = Order.new(order_params)
+      @order.post_code = current_customer.post_code
+      @order.address = current_customer.address
+      @order.name = current_customer.first_name + current_customer.last_name
+    elsif params[:order][:select_address] == "1"
+      @order = Order.new(order_params)
+      @address = Delivery.find(params[:order][:delivery_id])
+      @order.post_code = @address.post_code
+      @order.address = @address.address
+      @order.name = @address.name
+    else
+      @order = Order.new(order_params)
+    end
   end
 
   def create
