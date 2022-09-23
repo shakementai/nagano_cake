@@ -3,7 +3,7 @@
   <table class="mb-3">
     <tbody>
       <tr>
-        <td><span class="mr-5">購入者</span></td>
+        <th><span class="mr-5">購入者</span></th>
         <td style="text-decoration: underline;">
           <%= link_to admin_customer_path(@order.customer), class: "text-dark" do %>
             <%= @order.customer.last_name %><%= @order.customer.first_name %>
@@ -11,54 +11,76 @@
         </td>
       </tr>
       <tr>
-        <td><span class="mr-5">注文日</span></td>
+        <th><span class="mr-5">注文日</span></th>
         <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
       </tr>
       <tr>
-        <td><span class="mr-5">配送先</span></td>
+        <th><span class="mr-5">配送先</span></th>
         <td>
           〒<%= @order.post_code %> <%= @order.address %><br><%= @order.name %></td>
       </tr>
       <tr>
-        <td><span class="mr-5">支払方法</span></td>
+        <th><span class="mr-5">支払方法</span></th>
         <td><%= @order.payment_method_i18n %></td>
       </tr>
       <tr>
-        <td><span class="mr-5">注文ステータス</span></td>
+        <th><span class="mr-5">注文ステータス</span></td>
         <td>
           <%= form_with model: [:admin, @order] do |f| %>
             <%= f.collection_select :order_status, Order.order_statuses_i18n, :first, :last %>
-            <%= f.submit "更新", class: "btn btn-success ml-5" %>
+            <%= f.submit "更新", class: "btn btn-sm btn-success ml-5" %>
           <% end %>
         </td>
       </tr>
     </tbody>
   </table>
-  <table class="table table-hover">
-    <thead style= "width: fit-content; background-color: #efefef;">
-      <tr>
-        <th>商品名</th>
-        <th>単価（税込）</th>
-        <th>数量</th>
-        <th>小計</th>
-        <th>製作ステータス</th>
-      </tr>
-    </thead>
-    <tbody class="table table-borderless">
-      <% @order_items.each do |order_item| %>
+  <div class="row">
+    <table class=" col-8 table table-hover">
+      <thead style= "width: fit-content; background-color: #efefef;">
         <tr>
-          <td><%= order_item.item.name %></td>
-          <td><%= order_item.item.with_tax_price.to_s(:delimited) %></td>
-          <td><%= order_item.amount %></td>
-          <td><%= (order_item.item.with_tax_price * order_item.amount).to_s(:delimited) %></td>
-          <td>
-            <%= form_with model: [:admin, @order] do |f| %>
-              <%= f.collection_select :order_status, Order.order_statuses_i18n, :first, :last %>
-              <%= f.submit "更新", class: "btn btn-success" %>
-            <% end %>
-          </td>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>製作ステータス</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody class="table table-borderless">
+        <% @order_items.each do |order_item| %>
+          <tr>
+            <td><%= order_item.item.name %></td>
+            <td><%= order_item.item.with_tax_price.to_s(:delimited) %></td>
+            <td><%= order_item.amount %></td>
+            <td><%= (order_item.item.with_tax_price * order_item.amount).to_s(:delimited) %></td>
+            <td>
+              <%= form_with model: [:admin_order, order_item] do |f| %>
+                <%= f.collection_select :production_statuses, OrderItem.production_statuses_i18n, :first, :last %>
+                <%= f.submit "更新", class: "btn btn-sm btn-success" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <table class="d-flex align-items-end pb-4 ml-5">
+      <tr>
+        <th>商品合計</th>
+        <td>
+          <div class="text-right"><%= @order.total_price.to_s(:delimited) %>円</div>
+        </td>
+      </tr>
+      <tr>
+        <th>送料</th>
+        <td>
+          <div class="text-right"><%= @order.shipping_cost.to_s(:delimited) %>円</div>
+        </td>
+      </tr>
+      <tr>
+        <th>請求金額合計</th>
+        <th>
+          <div class="text-right ml-2"><%= (@order.total_price + @order.shipping_cost).to_s(:delimited) %>円</div>
+        </th>
+      </tr>
+    </table>
+  </div>
 </div>
