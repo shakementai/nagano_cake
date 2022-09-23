@@ -6,14 +6,14 @@
 
     <div class="col-10">
       <div class="jumbotron" style="margin-bottom: 5px; margin-right: 200px;">
-          <h5 class="p-5" id="top-icon">
+          <h5 class="p-5" id="top_icon">
           ようこそ、ながのCAKEへ！</br>
           このサイトは、ケーキ販売のECサイトになります。</br>
           会員でない方も商品の閲覧はできますが、</br>
           購入には会員登録が必要になります。
         </h5>
       </div>
-      <h3>新着商品</h3>
+      <h3 id="new_item_logo">新着商品</h3>
       <div class="d-flex item-link">
           <% @items.first(4).each do |item| %>
             <%= link_to item do %>
