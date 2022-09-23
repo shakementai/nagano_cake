@@ -20,18 +20,18 @@
           <%= f.label :select_address, "ご自身の住所" %>
           <div class="mb-3 ml-4">
             <%= '〒' + current_customer.post_code + ' ' + current_customer.address %><br>
-            <%= current_customer.last_name + current_customer.last_name %>
+            <%= current_customer.last_name + current_customer.first_name %>
           </div>
 
-        <% if @deliveries.blank? %>
-          <%= f.radio_button :select_address, 1, disabled: true %>
-          <%= f.label :select_address, "登録済住所から選択" %>
-          <div><%= f.select :delivery_id, "", { include_blank: "お届け先住所は登録されていません", disabled: true }, class: "form-control mb-3 ml-4" %></div>
-        <% else %>
-          <%= f.radio_button :select_address, 1 %>
-          <%= f.label :select_address, "登録済住所から選択" %>
-          <div><%= f.select :delivery_id, options_from_collection_for_select(@deliveries, :id, :address_display), class: "form-control mb-3 ml-4" %></div>
-        <% end %>
+          <% if @deliveries.blank? %>
+            <%= f.radio_button :select_address, 1, disabled: true %>
+            <%= f.label :select_address, "登録済住所から選択" %>
+            <div><%= f.select :delivery_id, "", { include_blank: "お届け先住所は登録されていません", disabled: true }, class: "form-control mb-3 ml-4" %></div>
+          <% else %>
+            <%= f.radio_button :select_address, 1 %>
+            <%= f.label :select_address, "登録済住所から選択" %>
+            <div><%= f.select :delivery_id, options_from_collection_for_select(@deliveries, :id, :address_display), class: "form-control mb-3 ml-4" %></div>
+          <% end %>
 
           <%= f.radio_button :select_address, 2 %>
           <%= f.label :select_address, "新しいお届け先" %>
