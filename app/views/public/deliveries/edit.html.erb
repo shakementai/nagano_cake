@@ -5,6 +5,9 @@
     </div>
   </div>
   <div class="row">
+    <%= render 'layouts/errors', obj: @delivery %>
+  </div>
+  <div class="row">
     <div class="col-md-11">
     <%= form_with model: @delivery, url: delivery_path, method: :patch do |f| %>
     <table class="table table-borderless">
