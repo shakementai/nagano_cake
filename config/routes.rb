@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get 'customers/:id/orders' => 'orders#index', as: 'customer_orders'
     root to: 'homes#top'
   end
-
+  get 'orders/confirm' => 'public/orders#new'
   post 'orders/confirm' => 'public/orders#confirm', as: 'confirm'
   get 'orders/complete' => 'public/orders#complete', as: 'complete'
 

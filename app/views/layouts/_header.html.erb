@@ -1,5 +1,5 @@
 <header class="mb-4 pb-5 shadow-sm">
-  <nav class="navbar navbar-expand-lg navbar-primary" id="top-logo">
+  <nav class="navbar navbar-expand-lg navbar-primary" id="top_logo">
     <div class="container">
       <a class="text-dark text-decoration-none" href="/"><h1>ながのCAKE</h1></a>
 
@@ -7,9 +7,6 @@
         <span class="ml-5">ようこそ、<%= current_customer.last_name %>さん！</span>
       <% end %>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
           <% if customer_signed_in? %>
