@@ -16,3 +16,19 @@ ja:
           production_wait: "製作待ち"
           producting: "製作中"
           product_complete: "製作完了"
+    activerecord:
+      attributes:
+        customer:
+          last_name: "姓"
+          first_name: "名"
+          last_kana_name: "セイ"
+          first_kana_name: "メイ"
+          email: "メールアドレス"
+          post_code: "郵便番号"
+          address: "住所"
+          phone_number: "電話番号"
+          password: "パスワード"
+        delivery:
+          post_code: "配送先アドレス"
+          address: "配送先住所"
+          name: "配送先氏名"
