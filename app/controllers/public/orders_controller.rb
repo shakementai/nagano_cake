@@ -2,6 +2,10 @@ class Public::OrdersController < ApplicationController
   def new
     @deliveries = Delivery.where(customer_id: current_customer.id)
     @order = Order.new
+    if request.path.include?("confirm")
+      redirect_to new_order_path
+      flash[:alert] = "確認画面の更新はできません"
+    end
   end
 
   def confirm
