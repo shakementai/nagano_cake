@@ -14,7 +14,11 @@
             <div class="m-1 p-1">
               <div style="height: 145px; padding: 2px;"><%= image_tag item.get_image(200,150) %></div>
               <div><%= item.name %></div>
-              <div>¥<%= item.with_tax_price.to_s(:delimited) %></div>
+              <% if item.is_active == true %>
+                <div>¥<%= item.with_tax_price.to_s(:delimited) %></div>
+              <% else %>
+                <div class="text-danger" >売り切れ</div>
+              <% end %>
             </div>
           <% end %>
         <% end %>
