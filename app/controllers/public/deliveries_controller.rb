@@ -11,14 +11,21 @@ class Public::DeliveriesController < ApplicationController
   def create
     @delivery = Delivery.new(delivery_params)
     @delivery.customer_id = current_customer.id
-    @delivery.save
-    redirect_to request.referer
+    if @delivery.save
+      redirect_to request.referer
+    else
+      @deliveries = Delivery.where(customer_id: current_customer.id)
+      render :index
+    end
   end
 
   def update
     @delivery = Delivery.find(params[:id])
-    @delivery.update(delivery_params)
-    redirect_to deliveries_path
+    if @delivery.update(delivery_params)
+      redirect_to deliveries_path
+    else
+      render :edit
+    end
   end
 
   def destroy

@@ -5,6 +5,9 @@
     </div>
   </div>
   <div class="row">
+    <%= render "layouts/errors", obj: @customer %>
+  </div>
+  <div class="row">
     <div class="col-md-4 offset-md-1 mt-3">
       <h5 class="text-center bg-light">会員の方はこちらからログイン</h5>
     </div>
@@ -15,7 +18,7 @@
       <table class="table table-borderless">
         <tr>
           <td width="20%" class="align-middle"><span>メールアドレス</span></td>
-          <td width="80%"><%= f.email_field :email, autofocus: true, autocomplete: "email", size: "50x30", style: "border-radius:8px;", class: "form-control" %></td>
+          <td width="80%"><%= f.text_field :email, autofocus: true, autocomplete: "email", size: "50x30", style: "border-radius:8px;", class: "form-control" %></td>
         </tr>
         <tr>
           <td class="align-middle">パスワード</td>
