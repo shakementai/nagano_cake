@@ -7,6 +7,7 @@
   <div class="row">
     <div class="col-md-8">
       <%= form_with model: @customer, url: information_path, method: :patch do |f| %>
+      <%= render "layouts/errors", obj: @customer %>
         <table class="table table-borderless table-sm">
           <tr>
             <td class="align-middle"><span>氏名</span></td>
@@ -34,7 +35,7 @@
           </tr>
           <tr>
             <td class="align-middle">メールアドレス</td>
-            <td><%= f.email_field :email, style: "border-radius: 8px;", class: "form-control" %></td>
+            <td><%= f.text_field :email, style: "border-radius: 8px;", class: "form-control" %></td>
           </tr>
           <tr>
             <td></td>

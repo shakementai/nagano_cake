@@ -13,6 +13,7 @@
           <h3><%= @item.name %></h3>
           <h5 style="height: 100px;"><%= @item.explanation %></h5>
           <h4>¥<%= @item.with_tax_price.to_s(:delimited) %><span class="small">(税込)</span></h4>
+          <% if @item.is_active == true %>
             <% if customer_signed_in? %>
               <div class="mt-5">
                 <%= form_with model: @cart_item, class: "form-inline", local: false do |f| %>
@@ -28,6 +29,9 @@
                 <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-success' %>
               </div>
             <% end %>
+          <% else %>
+            <h5 class="text-danger" >売り切れ</h5>
+          <% end %>
           </div>
 
           <h5 class="text-danger"><%= alert %></h5>
