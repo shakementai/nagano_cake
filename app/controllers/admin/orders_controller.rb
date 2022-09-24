@@ -7,8 +7,15 @@ class Admin::OrdersController < ApplicationController
   
   def update
     @order = Order.find(params[:id])
-    @order.save(order_params)
-    redirect_to request.referer
+    @order_item = @order.order_items
+    if @order.update(order_params)
+      if @order.order_status == "payment_confirmation"
+        @order_item.update(production_status:1)
+      elsif  @order.order_status == "product_complete"
+        @order_item.update(production_status:2)
+      end
+      redirect_to request.referer
+    end
   end
 
   def index

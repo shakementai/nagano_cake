@@ -53,8 +53,8 @@
             <td><%= order_item.amount %></td>
             <td><%= (order_item.item.with_tax_price * order_item.amount).to_s(:delimited) %></td>
             <td>
-              <%= form_with model: [:admin_order, order_item] do |f| %>
-                <%= f.collection_select :production_statuses, OrderItem.production_statuses_i18n, :first, :last %>
+              <%= form_with model: order_item, url: admin_order_order_item_path(@order.id, order_item.id)  do |f| %>
+                <%= f.collection_select :production_status, OrderItem.production_statuses_i18n, :first, :last %>
                 <%= f.submit "更新", class: "btn btn-sm btn-success ml-4" %>
               <% end %>
             </td>
