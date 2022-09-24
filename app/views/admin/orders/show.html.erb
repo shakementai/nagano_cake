@@ -45,7 +45,7 @@
           <th>製作ステータス</th>
         </tr>
       </thead>
-      <tbody class="table table-borderless">
+      <tbody class="table table-borderless border-bottom">
         <% @order_items.each do |order_item| %>
           <tr>
             <td><%= order_item.item.name %></td>
@@ -55,7 +55,7 @@
             <td>
               <%= form_with model: [:admin_order, order_item] do |f| %>
                 <%= f.collection_select :production_statuses, OrderItem.production_statuses_i18n, :first, :last %>
-                <%= f.submit "更新", class: "btn btn-sm btn-success" %>
+                <%= f.submit "更新", class: "btn btn-sm btn-success ml-4" %>
               <% end %>
             </td>
           </tr>
