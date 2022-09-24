@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+
   def new
     @deliveries = Delivery.where(customer_id: current_customer.id)
     @order = Order.new
