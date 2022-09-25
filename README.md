@@ -38,5 +38,5 @@
 - mail: admin@admin
 - password: adminadmin
 
-## 　作成者
+## 作成者
 チームB シャケめんたい
