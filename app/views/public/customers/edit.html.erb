@@ -1,10 +1,8 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-3 offset-md-1 mb-5">
-      <h4 class="text-center bg-light">会員情報編集画面</h4>
-    </div>
-  </div>
-  <div class="row">
+
+  <h4><span class="py-2 px-4 bg-light">会員情報編集画面</span></h4>
+  
+  <div class="row mt-5">
     <div class="col-md-8">
       <%= form_with model: @customer, url: information_path, method: :patch do |f| %>
       <%= render "layouts/errors", obj: @customer %>
