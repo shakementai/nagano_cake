@@ -7,6 +7,8 @@ class Public::OrdersController < ApplicationController
     if request.path.include?("confirm")
       redirect_to new_order_path
       flash[:alert] = "確認画面の更新はできません"
+    elsif current_customer.cart_items.blank?
+      redirect_to cart_items_path
     end
   end
 
