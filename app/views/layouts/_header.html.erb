@@ -1,0 +1,70 @@
+<header class="mb-4 shadow-sm">
+  <div class="container pb-2">
+    <div class="row">
+
+      <a class="col-5 p-2 text-decoration-none" href="/"><%= image_tag "/assets/TopLogo.png", size: "500x100" %></a>
+
+      <div class="col-7 mt-3">
+        <nav class="navbar navbar-expand-lg navbar-primary">
+
+          <% if customer_signed_in? %>
+            <span class="top_logo">ようこそ、<%= current_customer.last_name %>さん！</span>
+          <% end %>
+
+          <div class="collapse navbar-collapse top_logo">
+            <ul class="navbar-nav ml-auto">
+              <% if customer_signed_in? %>
+                <li class="nav-item align-top">
+                  <%= link_to 'マイページ', my_page_path, class: 'mr-3 btn btn-outline-warning' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to '商品一覧', items_path, class: 'mr-3 btn btn-outline-warning' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'カート', cart_items_path, class: 'mr-3 btn btn-outline-warning' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'btn btn-outline-warning' %>
+                </li>
+              <% elsif admin_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to "商品一覧", admin_items_path, class: 'mr-3 btn btn-outline-warning' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "会員一覧", admin_customers_path, class: 'mr-3 btn btn-outline-warning' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "注文履歴一覧", admin_root_path, class: 'mr-3 btn btn-outline-warning' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ジャンル一覧", admin_genres_path, class: 'mr-3 btn btn-outline-warning' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-warning' %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to "About", about_path, class: 'mr-3 btn btn-outline-warning' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "商品一覧", items_path, class: 'mr-3 btn btn-outline-warning' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "新規登録", new_customer_registration_path, class: 'mr-3 btn btn-outline-warning' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-outline-warning' %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="float-right mr-3">
+          <%= render 'layouts/search', obj: @word %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>

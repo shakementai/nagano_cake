@@ -1,0 +1,31 @@
+<div class="container">
+  
+  <h4><span class="py-2 px-4 bg-light">配送先編集画面</span></h4>
+
+  <div class="row mt-5">
+    <%= render 'layouts/errors', obj: @delivery %>
+  </div>
+  <div class="row">
+    <div class="col-md-11">
+    <%= form_with model: @delivery, url: delivery_path, method: :patch do |f| %>
+    <table class="table table-borderless">
+      <tr>
+        <td class="align-middle">郵便番号(ハイフンなし)</td>
+        <td><%= f.text_field :post_code, placeholder: "0000000", style: "border-radius: 8px; width: 40%", class: "form-control" %></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="align-middle">住所</td>
+        <td colspan="2"><%= f.text_field :address, size: "55x30",  placeholder: "東京都渋谷区代々木神園町0-0", style: "border-radius: 8px;", class: "form-control" %></td>
+      </tr>
+      <tr>
+        <td class="align-middle">宛名</td>
+        <td><%= f.text_field :name, placeholder: "令和道子", style: "border-radius: 8px; width: 40%", class: "form-control" %></td>
+        <td></td>
+        <td><%= f.submit "変更内容を保存", class: "btn btn-success" %></td>
+      </tr>
+    </table>
+    <% end %>
+    </div>
+  </div>
+</div>

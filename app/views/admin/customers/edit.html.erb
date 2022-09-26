@@ -1,2 +1,66 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container">
+  <div class="col-10 mx-auto">
+    <h4><span class="py-2 px-4 bg-light"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</span></h4>
+  </div>
+
+  <div style="width: 100%; margin-top: 30px; margin-left: 100px;">
+    <%= form_with model: [:admin, @customer] do |f| %>
+      <%= render "layouts/errors", obj: @customer %>
+      <table class="table table-borderless">
+        <tr>
+          <th>会員ID</th>
+          <td><%= @customer.id %></td>
+        </tr>
+        <tr>
+          <th style="width: 25%;"><span>名前</span></th>
+          <th>
+            <%= f.text_field :last_name %>
+            <%= f.text_field :first_name, class: "ml-3" %>
+            </th>
+        </tr>
+
+        <tr>
+          <th><span>フリガナ</span></th>
+          <th>
+            <%= f.text_field :last_kana_name %>
+            <%= f.text_field :first_kana_name, class: "ml-3" %>
+          </th>
+        </tr>
+
+        <tr>
+          <th><span>郵便番号(ハイフンなし)</span></th>
+          <th><%= f.text_field :post_code %></th>
+        </tr>
+
+        <tr>
+          <th><span>住所</span></th>
+          <th><%= f.text_field :address, size: 50 %></th>
+        </tr>
+
+        <tr>
+          <th>電話番号(ハイフンなし)</th>
+          <th><%= f.text_field :phone_number %></th>
+        </tr>
+
+        <tr>
+          <th><span>メールアドレス</span></th>
+          <th><%= f.email_field :email, autocomplete: "email" %></th>
+        </tr>
+
+        <tr>
+          <th>会員ステータス</th>
+          <th>
+            <%= f.radio_button :is_deleted, false %>
+            <%= f.label :is_deleted, '有効', value: false %>
+            <%= f.radio_button :is_deleted, true, class: "ml-3" %>
+            <%= f.label :is_deleted, '退会', value: true %>
+          </th>
+        </tr>
+
+        <tr>
+          <th></th>
+          <th><%= f.submit "変更を保存", class: "btn btn-success btn-lg" %></th>
+        </tr>
+      </table>
+    <% end %>
+  </div>
