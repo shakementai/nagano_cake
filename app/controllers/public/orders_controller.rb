@@ -34,7 +34,7 @@ class Public::OrdersController < ApplicationController
       @order = Order.new(order_params)
       #空白なら同じページに返す
       if params[:order][:post_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
-        flash[:alert] = "住所が入力されていません"
+        flash[:alert] = "配送先が正しく入力されていません"
         redirect_to new_order_path
       end
     end

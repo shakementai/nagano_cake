@@ -1,17 +1,17 @@
 <header class="mb-4 shadow-sm">
   <div class="container pb-2">
     <div class="row">
-      
-      <a class="col-5 p-2 text-decoration-none" href="/"><%= image_tag "/assets/6.png", size: "500x100" %></a>
+
+      <a class="col-5 p-2 text-decoration-none" href="/"><%= image_tag "/assets/TopLogo.png", size: "500x100" %></a>
 
       <div class="col-7 mt-3">
-        <nav class="navbar navbar-expand-lg navbar-primary " id="top_logo">
-          
+        <nav class="navbar navbar-expand-lg navbar-primary">
+
           <% if customer_signed_in? %>
-            <span class="">ようこそ、<%= current_customer.last_name %>さん！</span>
+            <span class="top_logo">ようこそ、<%= current_customer.last_name %>さん！</span>
           <% end %>
-    
-          <div class="collapse navbar-collapse">
+
+          <div class="collapse navbar-collapse top_logo">
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
                 <li class="nav-item align-top">
@@ -59,13 +59,11 @@
             </ul>
           </div>
         </nav>
-   
+
         <div class="float-right mr-3">
-          <% if customer_signed_in? || admin_signed_in? %>
-            <%= render 'layouts/search', obj: @word %>
-          <% end %>
+          <%= render 'layouts/search', obj: @word %>
         </div>
-        
+
       </div>
     </div>
   </div>
