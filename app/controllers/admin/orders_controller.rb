@@ -20,7 +20,7 @@ class Admin::OrdersController < ApplicationController
 
   def index
     @customer = Customer.find(params[:id])
-    @orders = Order.page(params[:page]).per(10)
+    @orders = @customer.orders.page(params[:page]).per(10)
   end
 
   private
