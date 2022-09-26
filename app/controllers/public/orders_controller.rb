@@ -2,13 +2,15 @@ class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
 
   def new
+    if current_customer.cart_items.blank?
+      redirect_to cart_items_path
+    end
     @deliveries = Delivery.where(customer_id: current_customer.id)
     @order = Order.new
+    #確認画面をリロードした際のエラー回避
     if request.path.include?("confirm")
       redirect_to new_order_path
       flash[:alert] = "確認画面の更新はできません"
-    elsif current_customer.cart_items.blank?
-      redirect_to cart_items_path
     end
   end
 
@@ -16,6 +18,7 @@ class Public::OrdersController < ApplicationController
     cart = current_customer.cart_items
     @cart_items = cart.all
     @total_price = 0
+    #ラジオボタンでの条件分岐
     if params[:order][:select_address] == "0"
       @order = Order.new(order_params)
       @order.post_code = current_customer.post_code
@@ -29,13 +32,22 @@ class Public::OrdersController < ApplicationController
       @order.name = @address.name
     else
       @order = Order.new(order_params)
+      #空白なら同じページに返す
+      if params[:order][:post_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
+        flash[:alert] = "住所が入力されていません"
+        redirect_to new_order_path
+      end
     end
   end
 
   def create
+    #カート内商品を定義
     cart_items = current_customer.cart_items.all
+
     @order = Order.new(order_params)
     @order.save
+
+    #カートアイテムを個別に取り出してオーダーアイテムに保存
     cart_items.each do |cart_item|
       order_item = OrderItem.new
       order_item.order_id = @order.id
