@@ -1,4 +1,4 @@
-![スクリーンショット 2022-09-25 13 36 57](https://user-images.githubusercontent.com/108987382/192128722-8c50bf64-b802-4330-beea-8e23262df3f6.png)
+![スクリーンショット 2022-09-26 10 32 38](https://user-images.githubusercontent.com/108987382/192178066-ba294e4c-1747-40e2-950d-b17fd2c9b51a.png)
 ## 概要
 長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト開発。
 
